@@ -1,0 +1,43 @@
+        program PuntosPalabra
+      implicit none
+      integer :: puntos, i, largo
+      character(len=100) :: palabra
+      character(len=1) :: letra
+
+      puntos = 0
+
+      print *, 'CALCULADORA DE PUNTOS DE PALABRAS'
+      print *, 'La A vale 1, B vale 2, C vale 3, etc...'
+      print *, 'El programa termina cuando la palabra vale 100 puntos'
+      print *, ' '
+
+      do while (puntos .ne. 100)
+          write(*, '(A)', advance='no') 'Ingresa una palabra, solo letr
+     +as, sin espacios ni numeros: '
+          read(*,*) palabra
+
+          puntos = 0
+          largo = len_trim(palabra)
+
+          do i = 1, largo
+              letra = palabra(i:i)
+              if (letra .ge. 'a' .and. letra .le. 'z') then
+                  letra = char(ichar(letra) - 32)
+              endif
+
+              if (letra .ge. 'A' .and. letra .le. 'Z') then
+                  puntos = puntos + (ichar(letra) - ichar('A') + 1)
+              endif
+          end do
+
+          print *, 'La palabra "', trim(palabra), '" vale ', puntos,
+     +             ' puntos'
+
+          if (puntos .eq. 100) then
+              print *, 'Ya haz conseguido los 100 puntos.'
+     +
+          endif
+          print *, ' '
+      end do
+
+      end program PuntosPalabra
