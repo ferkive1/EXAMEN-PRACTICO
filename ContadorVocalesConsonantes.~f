@@ -1,0 +1,33 @@
+      program ContadorVocalesConsonantes
+              implicit none
+              character*100 palabra
+              integer i, vocal, consonante, longitud
+              character letra
+
+              print *, 'Ingrese una palabra: '
+              read '(a)', palabra
+
+              vocal = 0
+              consonante = 0
+              l = len_trim(palabra)
+
+      do i = 1, l
+          letra = palabra(i:i)
+          if (letra .ge. 'A' .and. letra .le. 'Z') then
+              letra = char(ichar(letra) + 32)
+          endif
+          if (letra .ge. 'a' .and. letra .le. 'z') then
+             if (letra .eq. 'a' .or. letra .eq. 'e' .or.
+     &           letra .eq. 'i' .or. letra .eq. 'o' .or.
+     &           letra .eq. 'u') then
+                 vocal = vocal + 1
+             else
+                 consonante = consonante + 1
+             endif
+          endif
+      enddo
+
+           print *, 'Vocales: ', vocal
+           print *, 'Consonantes: ', consonante
+           pause
+      end
