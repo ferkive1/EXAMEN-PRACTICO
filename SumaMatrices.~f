@@ -1,0 +1,54 @@
+      program sumaMatrices
+      implicit none
+      integer filas, columnas, i, j
+      integer, allocatable :: matrizA(:,:), matrizB(:,:), matrizC(:,:)
+
+      write(*,*) 'Ingrese el numero de filas de las matrices: '
+      read(*,*) filas
+      write(*,*) 'Ingrese el numero de columnas de las matrices: '
+      read(*,*) columnas
+
+      allocate(matrizA(filas, columnas))
+      allocate(matrizB(filas, columnas))
+      allocate(matrizC(filas, columnas))
+
+      write(*,*) ' '
+      write(*,*) 'Ingrese valores de matriz A:'
+      do i = 1, filas
+          do j = 1, columnas
+              write(*,*) 'A[', i-1, '][', j-1, ']: '
+              read(*,*) matrizA(i, j)
+          end do
+      end do
+
+      write(*,*) ' '
+      write(*,*) 'Ingrese valores de matriz B:'
+      do i = 1, filas
+          do j = 1, columnas
+              write(*,*) 'B[', i-1, '][', j-1, ']: '
+              read(*,*) matrizB(i, j)
+          end do
+      end do
+
+      do i = 1, filas
+          do j = 1, columnas
+              matrizC(i, j) = matrizA(i, j) + matrizB(i, j)
+          end do
+      end do
+
+      write(*,*) ' '
+      write(*,*) 'El resultado de la matriz es: '
+      do i = 1, filas
+          do j = 1, columnas
+              write(*, '(i6, $)') matrizC(i, j)
+          end do
+          write(*,*) ' '
+      end do
+
+      deallocate(matrizA)
+      deallocate(matrizB)
+      deallocate(matrizC)
+      
+      pause
+
+      end program sumamatrices
